@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	static char usage[] = "usage: %s [-h] [-L -d -g -i -p -s -t -u | -l] [dirname]" //usage statement
 
 	//getopt loop with switch for args
-	while ((c = getopt(argc, argv, "hldgipstul")) != -1)
+	while ((c = getopt(argc, argv, "hLdgipstul")) != -1)
 		switch (c) {
 			case 'h':
 				hflag = 1;
@@ -51,7 +51,8 @@ int main(int argc, char **argv)
 				//print information on the file as if the options
 				//tpiugs are all specified
 			case '?':
-		}
+				//some default case.
+		}		
 
 
 	return 0;	
