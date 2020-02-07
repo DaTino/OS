@@ -4,9 +4,10 @@
 
 struct Queue
 {
-	int first, last, size;
+	char* first, last;
+	int   size;
 	unsigned capacity;
-	int* array;
+	char** array;
 };
 
 //Queue initialization function of stated capacity.
@@ -17,7 +18,7 @@ struct Queue* createQueue(unsigned capacity)
 	queue->capacity = capacity;
 	queue->first	= queue->size = 0;
 	queue->last	= capacity - 1; //important, via enqueue
-	queue->array 	= (int*) malloc(queue->capacity * sizeof(int));
+	queue->array 	= (char**) malloc(queue->capacity * sizeof(char*));
 	return queue;
 }
 
@@ -39,14 +40,14 @@ void queueEnqueue(struct Queue* queue, int data)
 	if (queueFull(queue))
 		return; // <- add stderror message here later
 	queue->last = (queue->last + 1_)%queue->capacity;
-	queue->arrau[queue->rear] = item;
+	queue->array[queue->rear] = item;
 	queue->size = queue->size + 1;
 	//debugging
 	printf("%d enqueued to queue\n", item);
 }
 
 //Removes data from queue
-int queueDequeue(struct Queue* queue)
+char* queueDequeue(struct Queue* queue)
 {
 	if (queueEmpty(queue))
 		return INT_MIN; // <- ??? what is int min?
@@ -57,7 +58,7 @@ int queueDequeue(struct Queue* queue)
 }
 
 //get first data item in queue
-int queueFirst(struct Queue* queue)
+char* queueFirst(struct Queue* queue)
 {
 	if (queueEmpty(queue))
 		return INT_MIN;
@@ -65,7 +66,7 @@ int queueFirst(struct Queue* queue)
 }
 
 //get last data item in queue
-int queueRear(Queue* queue)
+char* queueRear(Queue* queue)
 {
 	if (queueEmpty(queue))
 		return INT_MIN;
