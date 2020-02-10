@@ -64,7 +64,7 @@ void queueEnqueue(stringQueue* queue, char* data)
     strcpy(queue->elements[queue->last], data);
   }
 	//debugging
-	printf("%s enqueued to queue\n", data);
+	//printf("%s enqueued to queue\n", data);
   return;
 }
 

@@ -3,12 +3,12 @@
 
 int main(int argc, char **argv)
 {	
-	
+
 	extern char *optarg;		//no. of args for getopt
 	extern int optind;		//current index arg for getopt
 	int c, err = 0;			//counter and errors for getopt
-	int hflag=0, bigLflag=0, dflag=0, gflag=0, 
-	    iflag=0, pflag=0, sflag=0, tflag=0, 
+	int hflag=0, bigLflag=0, dflag=0, gflag=0,
+	    iflag=0, pflag=0, sflag=0, tflag=0,
 	   uflag=0, lflag=0;		//option flags, to track which option has been hit
 	char *dirname;			//string for the name of our chosen directory
 	static char usage[] = "usage: %s [-h] [-L -d -g -i -p -s -t -u | -l] [dirname]" //usage statement
@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 				//print a help message and exit
 			case 'L':
 				bigLflag = 1;
-				//follow symbolic links, if any. Default will be 
+				//follow symbolic links, if any. Default will be
 				//not to follow symbolic links.
 			case 'd':
 				dflag = 1;
@@ -52,8 +52,8 @@ int main(int argc, char **argv)
 				//tpiugs are all specified
 			case '?':
 				//some default case.
-		}		
+		}
 
 
-	return 0;	
+	return 0;
 }
