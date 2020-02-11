@@ -30,7 +30,7 @@ void breadthfirst(char* directory)
     {
       if (strcmp(dirent->d_name, ".") == 0 || strcmp(dirent->d_name, "..") == 0)
         continue;
-      char* temp; strcpy(temp, prefix);
+      char temp[64]; strcpy(temp, prefix);
       //debug printf("temp: %s\n", temp);
       queueEnqueue(queue, strcat(temp, dirent->d_name));
     }
@@ -57,7 +57,7 @@ void breadthfirst(char* directory)
       char* prefix = strcat(current, "/");
       while ((dirent = readdir(dir)) != NULL)
       {
-        char* temp; strcpy(temp, prefix);
+        char temp[64]; strcpy(temp, prefix);
         if (strcmp(dirent->d_name, ".") == 0 || strcmp(dirent->d_name, "..") == 0)
           continue;
         if (dirent->d_type != DT_DIR) {
