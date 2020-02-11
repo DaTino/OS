@@ -1,0 +1,6 @@
+bt by Alberto Maiocco 2020
+
+If all of the stat() functions are taken out, the program will display the tree decently.
+Had a lot of problems getting the program to work on hoar, I run the ubuntu subsystem on windows.
+Getopt should work here, not sure if it will with the "current directory". I've been testing on the proj folder included.
+Next one will be better.

@@ -1,0 +1,12 @@
+0000000000000000000000000000000000000000 0a7fc1b1ad870ce79fdb0f1fcb9196ea08efd6d5 Alberto Maiocco <apmaiocco@gmail.com> 1580343320 -0600	commit (initial): Initial commit. Setting up repo.
+0a7fc1b1ad870ce79fdb0f1fcb9196ea08efd6d5 9d92bf13b84d021a4e66c60c1b7ed2559783af53 Alberto Maiocco <apmaiocco@gmail.com> 1580772980 -0600	commit: started queue structure
+9d92bf13b84d021a4e66c60c1b7ed2559783af53 82a6dde16aecb6cdd2d71d6282293eaef9fa5d22 Alberto Maiocco <apmaiocco@gmail.com> 1580776573 -0600	commit: started main with getopt, breadthfirst search
+82a6dde16aecb6cdd2d71d6282293eaef9fa5d22 68c732ab674f44c191aa5aaca269822a2e54af1e Alberto Maiocco <apmaiocco@gmail.com> 1581091796 -0600	commit: added L to getopt switch
+68c732ab674f44c191aa5aaca269822a2e54af1e b1051736add7bd91e3c3ba944be9906f4560eded Alberto Maiocco <apmaiocco@gmail.com> 1581093413 -0600	commit: changing queue data from int to char*
+b1051736add7bd91e3c3ba944be9906f4560eded 367460a07054a331c54ae6dfa393ac32d0a65e32 Alberto Maiocco <apmaiocco@gmail.com> 1581349202 -0600	commit: starting header files
+367460a07054a331c54ae6dfa393ac32d0a65e32 f179139e2a8ab4f786353039633d34210b159770 Alberto Maiocco <apmaiocco@gmail.com> 1581391476 -0600	pull: Fast-forward
+f179139e2a8ab4f786353039633d34210b159770 af3179e9f7ca827b5fe85fbfffb0032470b7f81b Alberto Maiocco <apmaiocco@gmail.com> 1581392120 -0600	pull: Fast-forward
+af3179e9f7ca827b5fe85fbfffb0032470b7f81b e8b1a6ef774446e4f51e4b1995d9afe061611ed4 Alberto Maiocco <apmaiocco@gmail.com> 1581392280 -0600	pull: Fast-forward
+e8b1a6ef774446e4f51e4b1995d9afe061611ed4 93b19ceaceba46f6257274f10ab974c9940cd914 Alberto Maiocco <apmaiocco@gmail.com> 1581392690 -0600	pull: Fast-forward
+93b19ceaceba46f6257274f10ab974c9940cd914 6c117a3823e1d84194a740c3e08157b50c816aeb Alberto Maiocco <apmaiocco@gmail.com> 1581393143 -0600	pull: Fast-forward
+6c117a3823e1d84194a740c3e08157b50c816aeb 1bd43235926e8d580e23840a038726c9e4e34df6 Alberto Maiocco <apmaiocco@gmail.com> 1581398894 -0600	pull: Fast-forward
