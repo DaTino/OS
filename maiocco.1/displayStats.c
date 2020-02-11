@@ -10,11 +10,18 @@
 #include <grp.h>
 #include <locale.h>
 #include <langinfo.h>
+#include "displayStats.h"
 
-//functions for individual options go here!
+
 
 void displayStats(char* path, struct stat dirstat)
 {
+
+  struct passwd *pwd;
+  struct group *grp;
+  struct tm *tm;
+  char datestring[256];
+
   if (lflag) //follow all the below stats
   {
     tflag=1;
@@ -22,7 +29,7 @@ void displayStats(char* path, struct stat dirstat)
     uflag=1;
     pflag=1;
     iflag=1;
-    sflage=1;
+    sflag=1;
   }
   if (bigLflag) //follow symlinks
   {
@@ -32,7 +39,7 @@ void displayStats(char* path, struct stat dirstat)
       if(lstat(path, &dirstat) == 0)
       {
         slpath = realpath(path, NULL);
-        print("SymLink Path: %s\n", slpath);
+        printf("SymLink Path: %s\n", slpath);
       }
     }
   }

@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "breadthfirst.h"
+#include "displayStats.h"
+#include "stringQueue.h"
 
 int bigLflag=0, dflag=0, gflag=0,
 		iflag=0, pflag=0, sflag=0, tflag=0,
 	 uflag=0, lflag=0;		//option flags, to track which option has been hit
 //made these global to go between functions
+//functions for individual options go here!
 
 int main(int argc, char **argv)
 {
@@ -16,22 +20,21 @@ int main(int argc, char **argv)
 	//     iflag=0, pflag=0, sflag=0, tflag=0,
 	//    uflag=0, lflag=0;		//option flags, to track which option has been hit
 	char *dirname;			//string for the name of our chosen directory
-	static char usage[] = "usage: %s [-h] [-L -d -g -i -p -s -t -u | -l] [dirname]" //usage statement
+	static char usage[] = "usage: %s [-h] [-L -d -g -i -p -s -t -u | -l] [dirname]"; //usage statement
 
 	//getopt loop with switch for args
 	while ((c = getopt(argc, argv, "hLdgipstul")) != -1)
 		switch (c) {
 			case 'h':
-				hflag = 1;
-				printf("bt: a breadthfirst directory search by Alberto Maiocco 2020.\n
-								bt is invoked with the following options:\n
-								h Print a help message and exit.\n
-								L Follow symbolic links, if any. Default will be to not follow symbolic links.\n
-								t Print information on file type.\n
-								p Print permission bits as rwxrwxrwx.\n
-								i Print the number of links to file in inode table.\n
-								u Print the UID associated with the file.\n
-								g Print the GID associated with the file.\n");
+				printf("bt: a breadthfirst directory search by Alberto Maiocco 2020.\n");
+				printf("bt is invoked with the following options:\n");
+				printf("h Print a help message and exit.\n");
+				printf("L Follow symbolic links, if any. Default will be to not follow symbolic links.\n");
+				printf("t Print information on file type.\n");
+				printf("p Print permission bits as rwxrwxrwx.\n");
+				printf("i Print the number of links to file in inode table.\n");
+				printf("u Print the UID associated with the file.\n");
+				printf("g Print the GID associated with the file.\n");
 				//print a help message and exit
 			case 'L':
 				bigLflag = 1;
@@ -64,13 +67,11 @@ int main(int argc, char **argv)
 				lflag = 1;
 				//print information on the file as if the options
 				//tpiugs are all specified
-			case '?':
-				//some default case.
 		}
 
 		//current directory if argv == 0
 		//specified directory otherwise
-		breadthfirst(".")
+		breadthfirst("./proj");
 
 	return 0;
 }

@@ -3,13 +3,16 @@
 #include <dirent.h>
 #include <string.h>
 #include "stringQueue.h"
+#include "displayStats.h"
+#include <sys/stat.h>
 //need #include for header with functions to get stats for dirs
 
 //the queue itself will be created in main
 //or should I just make one here? that may be easier
 void breadthfirst(char* directory)
 {
-
+    struct stat dirstat;
+    char statbuffer[512];
     struct dirent *dirent;
     DIR *dir;
     //maintain a queue to store files and directories
@@ -37,6 +40,8 @@ void breadthfirst(char* directory)
     }
     closedir(dir);
     printf("%s\n", queueFirst(queue));
+    stat(queueFirst(queue), &dirstat);
+    displayStats(queueFirst(queue), dirstat);
     queueDequeue(queue);
 
     //loop until queue is empty-all files and directories present inside root directory are processed
@@ -48,7 +53,8 @@ void breadthfirst(char* directory)
 
       //get list of all files and directories in the current directory
       printf("%s\n", current);
-
+      stat(current, &dirstat);
+      displayStats(current, dirstat);
       if ((dir = opendir(current)) == NULL)
       {
         //debug printf("Fails: %s\n", current);
@@ -63,6 +69,8 @@ void breadthfirst(char* directory)
           continue;
         if (dirent->d_type != DT_DIR) {
           printf("%s\n", strcat(temp, dirent->d_name));
+          stat(temp, &dirstat);
+          displayStats(temp, dirstat);
           continue;
         }
         queueEnqueue(queue, strcat(temp, dirent->d_name));

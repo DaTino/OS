@@ -4,8 +4,8 @@ TARGET = bt
 
 all: $(TARGET)
 
-$(TARGET): breadthfirst.c
-	$(CC) $(CFLAGS) -o $(TARGET) breadthfirst.c stringQueue.c stringQueue.h
+$(TARGET): main.c
+	$(CC) $(CFLAGS) -o $(TARGET) main.c breadthfirst.c breadthfirst.h displayStats.c displayStats.h stringQueue.c stringQueue.h 
 
 clean:
 	$(RM) $(TARGET)
