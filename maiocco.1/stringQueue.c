@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <string.h>
+#include <dirent.h>
 
 #define SIZE 100
 
@@ -101,7 +102,7 @@ char* queueLast(stringQueue* queue)
   {
     return queue->elements[queue->last];
   }
-
+	return NULL;
 }
 
 /* Driver for testing
