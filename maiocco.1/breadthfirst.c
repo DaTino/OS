@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
+#include <string.h>
 #include "stringQueue.h"
 //need #include for header with functions to get stats for dirs
 
@@ -12,6 +13,7 @@ void breadthfirst(char* directory)
     DIR *dir;
     //maintain a queue to store files and directories
     stringQueue* queue = createQueue(50);
+    char pathbuf[256]; //to store path of parent dirs
     //root directory
     if ((dir = opendir(directory)) == NULL)
     {
@@ -20,12 +22,21 @@ void breadthfirst(char* directory)
     }
     //add root directory to the queue
     queueEnqueue(queue, directory);
+    strcat(pathbuf, directory);
+    char* prefix = strcat(pathbuf, "/");
+    //debug printf("prefix: %s\n", prefix);
+
     while ((dirent = readdir(dir)) != NULL)
     {
-      queueEnqueue(queue, dirent->d_name);
+      if (strcmp(dirent->d_name, ".") == 0 || strcmp(dirent->d_name, "..") == 0)
+        continue;
+      char* temp; strcpy(temp, prefix);
+      //debug printf("temp: %s\n", temp);
+      queueEnqueue(queue, strcat(temp, dirent->d_name));
     }
     closedir(dir);
-
+    printf("%s\n", queueFirst(queue));
+    queueDequeue(queue);
 
     //loop until queue is empty-all files and directories present inside root directory are processed
     while (!queueEmpty(queue))
@@ -33,19 +44,30 @@ void breadthfirst(char* directory)
       //get next file/directory from the queue
       char* current = queueFirst(queue);
       queueDequeue(queue);
+
       //get list of all files and directories in the current directory
       printf("%s\n", current);
 
+      if ((dir = opendir(current)) == NULL)
+      {
+        //debug printf("Fails: %s\n", current);
+        perror("bt: Error: Failed to open directory.");
+        return;
+      }
+      char* prefix = strcat(current, "/");
+      while ((dirent = readdir(dir)) != NULL)
+      {
+        char* temp; strcpy(temp, prefix);
+        if (strcmp(dirent->d_name, ".") == 0 || strcmp(dirent->d_name, "..") == 0)
+          continue;
+        if (dirent->d_type != DT_DIR) {
+          printf("%s\n", strcat(temp, dirent->d_name));
+          continue;
+        }
+        queueEnqueue(queue, strcat(temp, dirent->d_name));
+      }
     }
 
-
-    // queueEnqueue(queue, directory);
-    // while (!queueEmpty)
-    // {
-    //   char* next = queueFirst(queue);
-    //   queueDequeue(queue);
-    //
-    // }
 }
 
 int main()
