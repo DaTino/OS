@@ -1,15 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int bigLflag=0, dflag=0, gflag=0,
+		iflag=0, pflag=0, sflag=0, tflag=0,
+	 uflag=0, lflag=0;		//option flags, to track which option has been hit
+//made these global to go between functions
+
 int main(int argc, char **argv)
-{	
+{
 
 	extern char *optarg;		//no. of args for getopt
 	extern int optind;		//current index arg for getopt
 	int c, err = 0;			//counter and errors for getopt
-	int hflag=0, bigLflag=0, dflag=0, gflag=0,
-	    iflag=0, pflag=0, sflag=0, tflag=0,
-	   uflag=0, lflag=0;		//option flags, to track which option has been hit
+	// int hflag=0, bigLflag=0, dflag=0, gflag=0,
+	//     iflag=0, pflag=0, sflag=0, tflag=0,
+	//    uflag=0, lflag=0;		//option flags, to track which option has been hit
 	char *dirname;			//string for the name of our chosen directory
 	static char usage[] = "usage: %s [-h] [-L -d -g -i -p -s -t -u | -l] [dirname]" //usage statement
 
@@ -18,6 +23,15 @@ int main(int argc, char **argv)
 		switch (c) {
 			case 'h':
 				hflag = 1;
+				printf("bt: a breadthfirst directory search by Alberto Maiocco 2020.\n
+								bt is invoked with the following options:\n
+								h Print a help message and exit.\n
+								L Follow symbolic links, if any. Default will be to not follow symbolic links.\n
+								t Print information on file type.\n
+								p Print permission bits as rwxrwxrwx.\n
+								i Print the number of links to file in inode table.\n
+								u Print the UID associated with the file.\n
+								g Print the GID associated with the file.\n");
 				//print a help message and exit
 			case 'L':
 				bigLflag = 1;
@@ -54,6 +68,9 @@ int main(int argc, char **argv)
 				//some default case.
 		}
 
+		//current directory if argv == 0
+		//specified directory otherwise
+		breadthfirst(".")
 
 	return 0;
 }

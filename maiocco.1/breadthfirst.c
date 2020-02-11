@@ -9,6 +9,7 @@
 //or should I just make one here? that may be easier
 void breadthfirst(char* directory)
 {
+
     struct dirent *dirent;
     DIR *dir;
     //maintain a queue to store files and directories
@@ -70,8 +71,8 @@ void breadthfirst(char* directory)
 
 }
 
-int main()
-{
-  breadthfirst("./proj");
-  return 0;
-}
+// int main()
+// {
+//   breadthfirst("./proj");
+//   return 0;
+// }
